@@ -1,0 +1,46 @@
+<!-- src/app/data-card/data-card.component.html -->
+
+<div class="card mb-0">
+    <div class="flex justify-content-between mb-3">
+      <div>
+        <span class="block font-semibold mb-3">{{ title }}</span>
+        <div class="text-900 font-medium text-xl">{{ value }}</div>
+      </div>
+      <div class="flex align-items-center justify-content-center bg-blue-100 border-round" [ngClass]="iconBgClass" [ngStyle]="{ width: '2.5rem', height: '2.5rem' }">
+        <i [ngClass]="iconClass"></i>
+      </div>
+    </div>
+    <!-- <span class="text-green-500 font-medium">{{ value }} {{ title.toLowerCase() }}</span> -->
+    <ng-container *ngIf="title === 'Guest'; else otherTitle">
+        <span class="text-500"> has experienced</span>
+      </ng-container>
+      <ng-template #otherTitle>
+        <ng-container *ngIf="title === 'Service'">
+          <span class="text-500"> services available</span>
+        </ng-container>
+        <ng-container *ngIf="title === 'Booking'">
+          <span class="text-500"> bookings made</span>
+        </ng-container>
+        <ng-container *ngIf="title === 'Facility'">
+          <span class="text-500"> facilities available</span>
+        </ng-container>
+        <ng-container *ngIf="title === 'Activity'">
+          <span class="text-500"> activities available</span>
+        </ng-container>
+        <ng-container *ngIf="title === 'Room'">
+          <span class="text-500"> rooms available</span>
+        </ng-container>
+        <ng-container *ngIf="title === 'Gallery'">
+          <span class="text-500"> gallery items</span>
+        </ng-container>
+        <ng-container *ngIf="title === 'Review'">
+          <span class="text-500"> reviews</span>
+        </ng-container>
+        <ng-container *ngIf="title === 'Booking.com'">
+          <span class="text-500"> bookings from Booking.com</span>
+        </ng-container>
+        <ng-container *ngIf="title === 'WhatsApp'">
+          <span class="text-500"> bookings from WhatsApp</span>
+        </ng-container>
+      </ng-template>
+  </div>

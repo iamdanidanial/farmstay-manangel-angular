@@ -1,0 +1,13 @@
+<full-calendar [options]="calendarOptions"></full-calendar>
+
+<p-dialog header="Booking Details" [(visible)]="displayDialog" [modal]="true" [closable]="true" [dismissableMask]="true">
+    <div *ngIf="selectedEvent">
+      <p><strong>Booking No:</strong> {{selectedEvent.noBooking}}</p>
+      <p><strong>Total Price:</strong> {{selectedEvent.totalPrice}}</p>
+      <p><strong>Room ID:</strong> {{selectedEvent.roomId}}</p>
+      <p><strong>Guest ID:</strong> {{selectedEvent.guestId}}</p>
+      <p><strong>Payment Method:</strong> {{selectedEvent.paymentMethod}}</p>
+      <p><strong>Payment Status:</strong> {{selectedEvent.paymentStatus}}</p>
+      <p><strong>Payment Date:</strong> {{selectedEvent.paymentDate}}</p>
+    </div>
+  </p-dialog>

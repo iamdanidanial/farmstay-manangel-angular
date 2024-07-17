@@ -1,0 +1,35 @@
+<div class="grid">
+    <div class="col-12 md:col-6 lg:col-3">
+      <app-data-card [title]="'Guest'" [value]="dataList.guest" iconClass="pi pi-user text-red-500 text-xl" iconBgClass=""></app-data-card>
+    </div>
+    <div class="col-12 md:col-6 lg:col-3">
+      <app-data-card [title]="'Service'" [value]="dataList.service" iconClass="pi pi-cog text-orange-500 text-xl"></app-data-card>
+    </div>
+    <div class="col-12 md:col-6 lg:col-3">
+        <app-data-card [title]="'Gallery'" [value]="dataList.gallery" iconClass="pi pi-image text-blue-500 text-xl"></app-data-card>
+      </div>
+      <div class="col-12 md:col-6 lg:col-3">
+        <app-data-card [title]="'Review'" [value]="dataList.review" iconClass="pi pi-star text-blue-500 text-xl"></app-data-card>
+      </div>
+    <div class="col-12 md:col-6 lg:col-3">
+      <app-data-card [title]="'Booking'" [value]="dataList.booking" iconClass="pi pi-calendar-plus text-blue-500 text-xl"></app-data-card>
+    </div>
+    <div class="col-12 md:col-6 lg:col-3">
+      <app-data-card [title]="'Facility'" [value]="dataList.facility" iconClass="pi pi-home text-blue-500 text-xl"></app-data-card>
+    </div>
+
+    <div class="col-12 md:col-6 lg:col-3">
+      <app-data-card [title]="'Activity'" [value]="dataList.activity" iconClass="pi pi-chart-bar text-blue-500 text-xl"></app-data-card>
+    </div>
+    <div class="col-12 md:col-6 lg:col-3">
+      <app-data-card [title]="'Room'" [value]="dataList.room" iconClass="pi pi-desktop text-blue-500 text-xl"></app-data-card>
+    </div>
+
+
+    <div class="col-12 md:col-6 lg:col-3">
+      <app-data-card [title]="'Booking.com'" [value]="dataList.bookingCounts?.['Booking.com']" iconClass="pi pi-check-circle text-blue-500 text-xl"></app-data-card>
+    </div>
+    <div class="col-12 md:col-6 lg:col-3">
+      <app-data-card [title]="'WhatsApp'" [value]="dataList.bookingCounts?.['WhatsApp']" iconClass="pi pi-whatsapp text-blue-500 text-xl"></app-data-card>
+    </div>
+  </div>
