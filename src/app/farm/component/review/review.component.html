@@ -119,7 +119,7 @@
             optionValue="value"
             appendTo="body"
             [filter]="true"
-            placeholder="Select Country"
+            placeholder="Select Guest"
             styleClass="w-full"
             required>
             <ng-template pTemplate="selectedItem" let-selectedItem>
@@ -149,7 +149,8 @@
 
       <div class="flex flex-column gap-2">
         <label for="content">Review:</label>
-        <input id="content" pInputText  formControlName="content" placeholder="Write your honest review here" required>
+        <textarea id="content" pInputTextarea  rows="5"
+        cols="60"   formControlName="content" placeholder="Write honest review" required></textarea>
         <div *ngIf="reviewForm.get('content').invalid && reviewForm.get('content').touched">
           Content is required.
         </div>
