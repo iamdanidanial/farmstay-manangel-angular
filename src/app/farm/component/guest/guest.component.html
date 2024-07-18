@@ -73,7 +73,7 @@
                       {{ customer.name }}
                     </td>
                     <td>
-                        <img src={{customer.country.googlemaps}} [class]="'flag flag-' + customer.country.name" width="30">
+                        <img src={{customer.country.flags}} [class]="'flag flag-' + customer.country.name" width="30">
                         <span class="image-text ml-2">{{customer.country.name}}</span>
                       </td>
                     <td>
@@ -209,7 +209,7 @@
             <tr *ngIf="dataCountry">
               <td><strong>Country:</strong></td>
               <td class="flex gap-2">
-                <img [src]="dataCountry.googlemaps" alt="{{dataCountry.name}} Flag" width="30">
+                <img [src]="dataCountry.flags" alt="{{dataCountry.name}} Flag" width="30">
                 <strong>{{dataCountry.name}}</strong>
                 </td>
             </tr>

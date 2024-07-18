@@ -54,7 +54,7 @@ export class ReviewComponent implements OnInit {
               this.dataGuests = res.data.map(guest => ({
                 label: guest.name,
                 value: guest.id,
-                flag: guest.country.googlemaps //
+                flag: guest.country.flags //
               })).sort((a, b) => a.label.localeCompare(b.label));
             } else {
                 this.messageService.add({ severity: 'error', summary: 'Gagal', detail: res.details });
