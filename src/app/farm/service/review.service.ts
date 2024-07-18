@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class ReviewService {
-  private apiUrl = `${environment.apiUrl}/review`; // Ganti dengan URL API Anda
+  private apiUrl = `${environment.apiUrlCoba}/review`; // Ganti dengan URL API Anda
 
   constructor(private http: HttpClient) { }
 

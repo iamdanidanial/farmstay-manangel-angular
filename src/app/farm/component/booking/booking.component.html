@@ -31,44 +31,54 @@
                     <th style="min-width: 12rem">
                         <div class="flex justify-content-between align-items-center">
                           No Transaksi
-                          <p-columnFilter type="text" field="noBooking" display="menu" placeholder="Search by No Transaksi"></p-columnFilter>
+
                         </div>
                       </th>
                       <th style="min-width: 12rem">
                         <div class="flex justify-content-between align-items-center">
                           Name
-                          <p-columnFilter type="text" field="guest.name" display="menu" placeholder="Search by name"></p-columnFilter>
+
                         </div>
                       </th>
                     <th style="min-width: 12rem">
                         <div class="flex justify-content-between align-items-center">
                           Country
-                          <p-columnFilter type="text" field="country.name" display="menu" placeholder="Search by Country"></p-columnFilter>
+
                         </div>
                       </th>
                     <th style="min-width: 8rem">
                       <div class="flex justify-content-between align-items-center">
                         Kedatangan
-                        <p-columnFilter type="text" field="email" display="menu" placeholder="Search by name"></p-columnFilter>
+
                       </div>
                     </th>
                     <th style="min-width: 8rem">
                         <div class="flex justify-content-between align-items-center">
                           Selesai
-                          <p-columnFilter type="text" field="email" display="menu" placeholder="Search by name"></p-columnFilter>
+
                         </div>
                       </th>
                     <th style="min-width: 10rem">
                       <div class="flex justify-content-between align-items-center">
                        Room Type
-                        <p-columnFilter type="text" field="phoneNumber" display="menu" placeholder="Search by name"></p-columnFilter>
+
                       </div>
                     </th>
-                    <!-- <th style="min-width: 10rem">
+                    <th style="min-width: 10rem">
                       <div class="flex justify-content-between align-items-center">
-                        Image
+                        Payment Methode
                       </div>
-                    </th> -->
+                    </th>
+                    <th style="min-width: 10rem">
+                      <div class="flex justify-content-between align-items-center">
+                        Status
+                      </div>
+                    </th>
+                    <th style="min-width: 10rem">
+                      <div class="flex justify-content-between align-items-center">
+                        Booking Method
+                      </div>
+                    </th>
                     <th style="min-width: 12rem">
                       <div class="flex justify-content-between align-items-center">
                         Activity
@@ -99,6 +109,15 @@
                       </td>
                     <td>
                       {{ customer.room.name }}
+                    </td>
+                    <td>
+                      {{ customer.paymentMethod }}
+                    </td>
+                    <td>
+                      {{ customer.paymentStatus }}
+                    </td>
+                    <td>
+                      {{ customer.bookingMethod }}
                     </td>
                     <!-- <td class="text-center">
                       <img [src]="'http://localhost:3200/assets/guest/' + customer.image" alt="{{ customer.name }}'s image" width="100" height="100"/>

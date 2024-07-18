@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class GalleryService {
-  private apiUrl = `${environment.apiUrl}/gallery`; // Ganti dengan URL API Anda
+  private apiUrl = `${environment.apiUrlCoba}/gallery`; // Ganti dengan URL API Anda
 
   constructor(private http: HttpClient) { }
 

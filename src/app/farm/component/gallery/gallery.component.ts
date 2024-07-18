@@ -7,6 +7,8 @@ import { firstValueFrom, tap } from 'rxjs';
 import { GalleryService } from '../../service/gallery.service';
 import { Guest } from '../../model/guest.model';
 import { GuestService } from '../../service/guest.service';
+import { environment } from '../../../../environments/environment';
+
 
 
 @Component({
@@ -26,6 +28,7 @@ export class GalleryComponent implements OnInit {
   viewDialog: boolean = false;
   currentGuest: Gallery | null = null;
   guestName: string = '';
+  public apiUrlImage = environment.apiUrlImage;
 
   constructor(
     private gallleryService: GalleryService,

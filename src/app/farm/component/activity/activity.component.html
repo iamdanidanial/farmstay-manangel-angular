@@ -1,9 +1,10 @@
 <p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>
 <div class="grid">
 	<div class="col-12">
 		<div class="card">
             <h3 class="flex w-7 align-items-center gap-2 text-primary">
-                <i style="font-size: 2.5rem" class="pi pi-image mr-2"></i>Activity
+                <i style="font-size: 2.5rem" class="pi pi-briefcase mr-2"></i>Activity
             </h3>
             <p>Effectively manage your guest data to keep it well-organized and easily accessible.</p>
             <hr>
@@ -27,10 +28,9 @@
                         No
                       </div>
                     </th>
-                    <th style="min-width: 8rem">
+                    <th style="min-width: 4rem">
                       <div class="flex justify-content-between align-items-center">
                         Image
-                        <p-columnFilter type="text" field="country.name" display="menu" placeholder="Search by Country"></p-columnFilter>
                       </div>
                     </th>
                     <th style="min-width: 8rem">
@@ -38,12 +38,12 @@
                           Title
                         </div>
                       </th>
-                      <th style="min-width: 16rem">
+                      <th style="min-width: 8rem">
                         <div class="flex justify-content-between align-items-center">
-                           Description
+                          Category
                         </div>
                       </th>
-                    <th style="min-width: 12rem">
+                    <th style="min-width: 4rem">
                       <div class="flex justify-content-between align-items-center">
                         Action
                       </div>
@@ -56,19 +56,22 @@
                       {{ rowIndex + 1 }}
                     </td>
                     <td>
-                        <img [src]="'http://localhost:3200/assets/activity/' + customer?.image" class="w-10rem">
+                      <img [src]="apiUrlImage + '/assets/activity/' + customer?.image" class="w-10rem">
                       </td>
                     <td>
                       {{ customer.title }}
                     </td>
                     <td>
-                     {{customer.description}}
+                      {{ customer.type }}
                     </td>
+
+                      <!-- <td [innerHTML]="customer.description"></td> -->
+
                     <td>
                       <span class="flex gap-2 w-full justify-content-center align-items-center">
                         <p-button icon="pi pi-pencil" [rounded]="true" [text]="true" (click)="editGuest(customer.id)" />
                         <p-button icon="pi pi-eye" [rounded]="true" [text]="true" severity="secondary" (click)="viewGuest(customer.id)" />
-                        <p-button icon="pi pi-trash" [rounded]="true" [text]="true" severity="danger" />
+                        <p-button icon="pi pi-trash" [rounded]="true" [text]="true" severity="danger" (click)="confirmDeleteGuest(customer)"/>
                       </span>
                     </td>
                   </tr>
@@ -91,53 +94,69 @@
 
 <p-dialog header="{{ isEditMode ? 'Edit data Photo: ' + guestName : 'Add Photo' }}" [(visible)]="displayDialog" [modal]="true" [closable]="true" [style]="{ 'min-width': '300px', 'max-width': '80vw', 'width': '80%' }">
     <form [formGroup]="galleryForm" (ngSubmit)="addGuest()">
-        <div class="flex flex-column gap-2">
-            <label for="guestId">Guest ID:</label>
-            <p-dropdown id="guestId"
-                formControlName="guestId"
-                [options]="dataGuests"
-                optionLabel="label"
-                optionValue="value"
-                appendTo="body"
-                [filter]="true"
-                placeholder="Select Country"
-                styleClass="w-full"
-                required>
-                <ng-template pTemplate="selectedItem" let-selectedItem>
-                    <div *ngIf="selectedItem" class="flex align-items-center">
-                      <img [src]="selectedItem.flag" alt="Country Flag" class="country-flag mr-2">
-                      <span>{{ selectedItem.label }}</span>
-                    </div>
-                  </ng-template>
-                  <ng-template pTemplate="item" let-item>
-                    <div class="flex align-items-center">
-                      <img [src]="item.flag" alt="Country Flag" class="country-flag mr-2">
-                      <span>{{ item.label }}</span>
-                    </div>
-                  </ng-template>
-            </p-dropdown>
-            <div *ngIf="galleryForm.get('guestId').invalid && galleryForm.get('guestId').touched">
-              Guest ID is required.
-            </div>
+      <div class="flex gap-2 w-full">
+        <div class="flex flex-column gap-2 w-full">
+          <label for="guestId">Guest ID:</label>
+          <p-dropdown id="guestId"
+              formControlName="guestId"
+              [options]="dataGuests"
+              optionLabel="label"
+              optionValue="value"
+              appendTo="body"
+              [filter]="true"
+              placeholder="Select Country"
+              styleClass="w-full"
+              required>
+              <ng-template pTemplate="selectedItem" let-selectedItem>
+                  <div *ngIf="selectedItem" class="flex align-items-center">
+                    <img [src]="selectedItem.flag" alt="Country Flag" class="country-flag mr-2">
+                    <span>{{ selectedItem.label }}</span>
+                  </div>
+                </ng-template>
+                <ng-template pTemplate="item" let-item>
+                  <div class="flex align-items-center">
+                    <img [src]="item.flag" alt="Country Flag" class="country-flag mr-2">
+                    <span>{{ item.label }}</span>
+                  </div>
+                </ng-template>
+          </p-dropdown>
+          <div *ngIf="galleryForm.get('guestId').invalid && galleryForm.get('guestId').touched">
+            Guest ID is required.
           </div>
+    </div>
+    <div class="flex flex-column gap-2 w-full">
+      <label for="title">Title:</label>
+      <input id="title" pInputText  formControlName="title" placeholder="e.g Beutiful Photoes" required>
+      <div *ngIf="galleryForm.get('title').invalid && galleryForm.get('title').touched">
+        Title is required.
+      </div>
+    </div>
+      </div>
+      <div class="flex gap-2 w-full">
+        <div class="flex flex-column gap-2 w-full">
+          <label for="date">Date:</label>
+          <p-calendar id="date" styleClass="w-full gap-2" formControlName="date" [showIcon]="true" dateFormat="dd/mm/yy" required></p-calendar>
+          <div *ngIf="galleryForm.get('date').invalid && galleryForm.get('date').touched">
+            Start Date is required.
+          </div>
+        </div>
+        <div class="flex flex-column gap-2 w-full">
+          <label for="type">Category</label>
+          <p-dropdown id="type"
+                      [options]="categories"
+                      formControlName="type"
+                      placeholder="Select a category"
+                      class="w-full"
+                      required></p-dropdown>
+          <div *ngIf="galleryForm.get('type').invalid && galleryForm.get('type').touched">
+            Category is required.
+          </div>
+        </div>
+      </div>
 
-      <div class="flex flex-column gap-2">
-        <label for="title">Title:</label>
-        <input id="title" pInputText  formControlName="title" placeholder="e.g Beutiful Photoes" required>
-        <div *ngIf="galleryForm.get('title').invalid && galleryForm.get('title').touched">
-          Title is required.
-        </div>
-      </div>
-      <div class="flex flex-column gap-2">
-        <label for="date">Start Date:</label>
-        <p-calendar id="date" styleClass="w-full gap-2" formControlName="date" [showIcon]="true" dateFormat="dd/mm/yy" required></p-calendar>
-        <div *ngIf="galleryForm.get('date').invalid && galleryForm.get('date').touched">
-          Start Date is required.
-        </div>
-      </div>
       <div  class="flex flex-column gap-2 mt-3">
         <label for="title">Write your story</label>
-        <p-editor formControlName="description" [style]="{ height: '320px' }" />
+        <p-editor formControlName="description" [style]="{ height: '240px' }" />
         <div *ngIf="galleryForm.get('description').invalid && galleryForm.get('description').touched">
           Title is required.
         </div>

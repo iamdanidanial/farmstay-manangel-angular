@@ -253,6 +253,19 @@ private getRooms(): Promise<any> {
       ))
   }
 
+  getPaymentMethodColor(paymentMethod: string): string {
+    switch (paymentMethod) {
+      case 'Cash':
+        return 'bg-blue-500 text-white';
+      case 'Paypal':
+        return 'bg-green-500 text-white';
+      case 'Bank Transfer':
+        return 'bg-yellow-500 text-white';
+      default:
+        return 'bg-gray-500 text-white';
+    }
+  }
+
   confirmDeleteGuest(guest: any): void {
     this.confirmationService.confirm({
       message: `Are you sure you want to delete ${guest.noBooking} atas nama ${guest.guest.name}?`,

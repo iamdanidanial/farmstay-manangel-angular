@@ -1,11 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Gallery } from '../../model/gallery.model';
-import {  MessageService } from 'primeng/api';
+import {  ConfirmationService, MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { firstValueFrom, tap } from 'rxjs';
 import { FarmService } from '../../model/farmservice.model';
 import { FarmServiceService } from '../../service/farmservice.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-farmservice',
@@ -23,9 +24,11 @@ export class FarmserviceComponent implements OnInit {
   viewDialog: boolean = false;
   currentGuest: Gallery | null = null;
   guestName: string = '';
+  public apiUrlImage = environment.apiUrlImage;
 
   constructor(
     private farmserviceService: FarmServiceService,
+    private confirmationService: ConfirmationService,
     private messageService            : MessageService,
     private fb: FormBuilder,) { }
 
@@ -38,8 +41,7 @@ export class FarmserviceComponent implements OnInit {
     this.galleryForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      guestId: ['', Validators.required],
-      galleryimg: ['']
+      serviceimg: ['']
     });
   }
 
@@ -134,6 +136,39 @@ export class FarmserviceComponent implements OnInit {
             }
         }),
     ));
+}
+
+confirmDeleteGuest(guest: any): void {
+  this.confirmationService.confirm({
+    message: `Are you sure you want to delete ${guest.title}?`,
+    header: 'Delete Confirmation',
+    icon: 'pi pi-info-circle',
+    acceptLabel: 'Yes',
+    rejectLabel: 'No',
+    acceptButtonStyleClass: 'p-button-danger',
+    rejectButtonStyleClass: 'p-button-outlined',
+    accept: () => {
+      this.deleteGuest(guest.id);
+    },
+    reject: () => {
+      this.messageService.add({ severity: 'info', summary: 'Cancelled', detail: 'You have cancelled' });
+    }
+  });
+}
+
+deleteGuest(id: number): void {
+  this.farmserviceService.deletFarmService(id).subscribe(
+    () => {
+      // Handle successful deletion
+      this.dataList = this.dataList.filter(guest => guest.id !== id);
+      this.messageService.add({ severity: 'success', summary: 'Success', detail: `deleted successfully` });
+    },
+    error => {
+      // Handle error
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: `Failed to delete data` });
+      console.error(`Failed to delete data`, error);
+    }
+  );
 }
 
 

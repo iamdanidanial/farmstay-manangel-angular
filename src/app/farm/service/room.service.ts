@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class RoomService {
-  private apiUrl = `${environment.apiUrl}/room`; // Ganti dengan URL API Anda
+  private apiUrl = `${environment.apiUrlCoba}/room`; // Ganti dengan URL API Anda
 
   constructor(private http: HttpClient) { }
 

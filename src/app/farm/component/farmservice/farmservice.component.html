@@ -1,9 +1,10 @@
 <p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>
 <div class="grid">
 	<div class="col-12">
 		<div class="card">
             <h3 class="flex w-7 align-items-center gap-2 text-primary">
-                <i style="font-size: 2.5rem" class="pi pi-image mr-2"></i>Activity
+                <i style="font-size: 2.5rem" class="pi pi-wrench mr-2"></i>Service
             </h3>
             <p>Effectively manage your guest data to keep it well-organized and easily accessible.</p>
             <hr>
@@ -30,7 +31,7 @@
                     <th style="min-width: 8rem">
                       <div class="flex justify-content-between align-items-center">
                         Image
-                        <p-columnFilter type="text" field="country.name" display="menu" placeholder="Search by Country"></p-columnFilter>
+
                       </div>
                     </th>
                     <th style="min-width: 8rem">
@@ -56,7 +57,7 @@
                       {{ rowIndex + 1 }}
                     </td>
                     <td>
-                        <img [src]="'http://localhost:3200/assets/farmservice/' + customer?.image" class="w-10rem">
+                      <img [src]="apiUrlImage + '/assets/farmservice/' + customer?.image" class="w-10rem">
                       </td>
                     <td>
                       {{ customer.title }}
@@ -67,7 +68,7 @@
                     <td>
                       <span class="flex gap-2 w-full justify-content-center align-items-center">
                         <p-button icon="pi pi-pencil" [rounded]="true" [text]="true" (click)="editGuest(customer.id)" />
-                        <p-button icon="pi pi-trash" [rounded]="true" [text]="true" severity="danger" />
+                        <p-button icon="pi pi-trash" [rounded]="true" [text]="true" severity="danger" (click)="confirmDeleteGuest(customer)"  />
                       </span>
                     </td>
                   </tr>
@@ -88,7 +89,7 @@
 	</div>
 </div>
 
-<p-dialog header="{{ isEditMode ? 'Edit data Photo: ' + guestName : 'Add Photo' }}" [(visible)]="displayDialog" [modal]="true" [closable]="true" [style]="{ 'min-width': '300px', 'max-width': '80vw', 'width': '30%' }">
+<p-dialog header="{{ isEditMode ? 'Edit data Service: ' + guestName : 'Add Service' }}" [(visible)]="displayDialog" [modal]="true" [closable]="true" [style]="{ 'min-width': '300px', 'max-width': '80vw', 'width': '30%' }">
     <form [formGroup]="galleryForm" (ngSubmit)="addGuest()">
       <div class="flex flex-column gap-2">
         <label for="title">Title:</label>
@@ -109,7 +110,7 @@
         <label for="guestimg">Image:</label>
         <input type="file" name="guestimg"  formControlName="guestimg" id="guestimg" (change)="onFileSelected($event)" accept="image/*">
       </div>
-      <div class="p-dialog-footer">
+      <div class="p-dialog-footer mt-3">
         <button pButton type="button" class="p-button-danger p-button-outlined" label="Cancel" icon="pi pi-times" (click)="onDisplayDialog()"></button>
         <button pButton type="submit" label="{{ isEditMode ? 'Update': 'Save' }}" icon="pi pi-save" [disabled]="galleryForm.invalid"></button>
       </div>

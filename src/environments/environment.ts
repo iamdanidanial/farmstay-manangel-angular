@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:3200/api',
-  apiUrlCoba: 'https://api.farmstaymanangel.com/api',
-  apiUrlImage: 'https://api.farmstaymanangel.com/'
+  apiUrlCoba: 'http://localhost:3200/api',
+  apiUrlImage: 'http://localhost:3200/'
 };
 
 /*

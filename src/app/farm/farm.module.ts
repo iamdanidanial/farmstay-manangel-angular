@@ -19,6 +19,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { CardDataComponent } from './component/dashboad/card-data/card-data.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditorModule } from 'primeng/editor';
+import { ChipModule } from 'primeng/chip';
 
 
 
@@ -44,7 +45,8 @@ import { EditorModule } from 'primeng/editor';
     SharedModule,
     FullCalendarModule,
     ReactiveFormsModule,
-    EditorModule
+    EditorModule,
+    ChipModule
   ],
   providers: [ MessageService, ConfirmationService ],
 })

@@ -26,7 +26,7 @@ export class GuestComponent implements OnInit {
   viewDialog: boolean = false;
   currentGuest: Guest | null = null;
   guestName: string = '';
-  public apiUrl = environment.apiUrlImage;
+  public apiUrlImage = environment.apiUrlImage;
 
   constructor(
     private guestService: GuestService,

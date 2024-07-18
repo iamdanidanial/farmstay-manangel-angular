@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class ActivityService {
-  private apiUrl = `${environment.apiUrl}/activity`; // Ganti dengan URL API Anda
+  private apiUrl = `${environment.apiUrlCoba}/activity`; // Ganti dengan URL API Anda
 
   constructor(private http: HttpClient) { }
 

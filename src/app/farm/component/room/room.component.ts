@@ -5,6 +5,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { firstValueFrom, tap } from 'rxjs';
 import { RoomService } from '../../service/room.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-room',
@@ -22,6 +23,7 @@ export class RoomComponent implements OnInit {
   viewDialog: boolean = false;
   currentGuest: Room | null = null;
   guestName: string = '';
+  public apiUrlImage = environment.apiUrlImage;
 
   constructor(
     private roomService: RoomService,

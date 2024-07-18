@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class FarmServiceService {
-  private apiUrl = `${environment.apiUrl}/service`; // Ganti dengan URL API Anda
+  private apiUrl = `${environment.apiUrlCoba}/service`; // Ganti dengan URL API Anda
 
   constructor(private http: HttpClient) { }
 
