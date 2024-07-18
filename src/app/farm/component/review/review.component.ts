@@ -42,6 +42,7 @@ export class ReviewComponent implements OnInit {
   buildForm():void{
     this.reviewForm = this.fb.group({
       content: ['', Validators.required],
+      title: ['', Validators.required],
       guestId: ['', [Validators.required]],
       rating: ['', Validators.required],
     });
@@ -116,6 +117,7 @@ export class ReviewComponent implements OnInit {
         this.reviewForm.patchValue({
           guestId: dataApi.guestId,
           content: dataApi.content,
+          title: dataApi.title,
           rating: dataApi.rating,
         });
         this.getGuests()

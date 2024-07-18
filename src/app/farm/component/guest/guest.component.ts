@@ -152,7 +152,7 @@ private getCountries(): Promise<any> {
             this.dataCountries = res.data.map(country => ({
               label: country.name,
               value: country.id,
-              flag: country.googlemaps //
+              flag: country.flags //
             })).sort((a, b) => a.label.localeCompare(b.label));
           } else {
               this.messageService.add({ severity: 'error', summary: 'Gagal', detail: res.details });
