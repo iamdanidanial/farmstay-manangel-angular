@@ -24,8 +24,9 @@ export class AppMenuComponent implements OnInit {
                 label: 'Transaksi',
                 items: [
                     { label: 'Guest', icon: 'pi pi-fw pi-user', routerLink: ['/farm/guest'] },
-                    { label: 'Booking', icon: 'pi pi-fw pi-wallet', routerLink: ['/farm/booking'] },
+                    // { label: 'Booking', icon: 'pi pi-fw pi-wallet', routerLink: ['/farm/booking'] },
                     { label: 'Room', icon: 'pi pi-fw pi-building', routerLink: ['/farm/room'] },
+                    { label: 'Review', icon: 'pi pi-fw pi-comments', routerLink: ['/farm/review'] },
                     // { label: 'Calendar', icon: 'pi pi-fw pi-calendar-plus', routerLink: ['/farm/calendar'] },
                     // { label: 'Table', icon: 'pi pi-fw pi-table', routerLink: ['/uikit/table'] },
                     // { label: 'List', icon: 'pi pi-fw pi-list', routerLink: ['/uikit/list'] },
@@ -47,7 +48,6 @@ export class AppMenuComponent implements OnInit {
                     { label: 'Service', icon: 'pi pi-fw pi-wrench', routerLink: ['/farm/service'] },
                     { label: 'Facility', icon: 'pi pi-fw pi-truck', routerLink: ['/farm/facility'] },
                     { label: 'Activity', icon: 'pi pi-fw pi-briefcase', routerLink: ['/farm/activity'] },
-                    { label: 'Review', icon: 'pi pi-fw pi-comments', routerLink: ['/farm/review'] },
                     { label: 'Gallery', icon: 'pi pi-fw pi-image', routerLink: ['/farm/gallery'] },
                 ]
             },
